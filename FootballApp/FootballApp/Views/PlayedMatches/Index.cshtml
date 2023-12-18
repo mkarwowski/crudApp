@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FootballApp.Models.PlayedMatch>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_matches.cshtml";
+}
+
+<h2>Played matches</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._team.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalsScored)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalsConceded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item._team.Name)
+    </td>
+    @if (item._result == FootballApp.Models.PlayedMatch.Result.win)
+    {
+        <td class="color-green">
+            @Html.DisplayFor(modelItem => item._result)
+        </td>
+    }
+    @if (item._result == FootballApp.Models.PlayedMatch.Result.lose)
+    {
+        <td class="color-red">
+            @Html.DisplayFor(modelItem => item._result)
+        </td>
+    }
+    @if (item._result == FootballApp.Models.PlayedMatch.Result.draw)
+    {
+        <td class="color-gray">
+            @Html.DisplayFor(modelItem => item._result)
+        </td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.GoalsScored)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GoalsConceded)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>

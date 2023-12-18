@@ -1,0 +1,60 @@
+﻿@model FootballApp.Models.MatchesPlayedByTeamModel
+
+@{
+    ViewBag.Title = "ShowMatches";
+    Layout = "~/Views/Shared/_Layout_matches.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.teamName)</h2>
+<p>@Html.DisplayFor(model => model.message)</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.playedMatches.First()._team.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.playedMatches.First()._result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.playedMatches.First().GoalsScored)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.playedMatches.First().GoalsConceded)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.playedMatches)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item._team.Name)
+            </td>
+            @if (item._result == FootballApp.Models.PlayedMatch.Result.win)
+            {
+                <td class="color-green">
+                    @Html.DisplayFor(modelItem => item._result)
+                </td>
+            }
+            @if (item._result == FootballApp.Models.PlayedMatch.Result.lose)
+            {
+                <td class="color-red">
+                    @Html.DisplayFor(modelItem => item._result)
+                </td>
+            }
+            @if (item._result == FootballApp.Models.PlayedMatch.Result.draw)
+            {
+                <td class="color-gray">
+                    @Html.DisplayFor(modelItem => item._result)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.GoalsScored)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoalsConceded)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,72 @@
+﻿@model FootballApp.Models.PlayedMatch
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_matches.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PlayedMatch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._team.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._team.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._result)
+        </dt>
+
+        @if (((FootballApp.Models.PlayedMatch)Model)._result == FootballApp.Models.PlayedMatch.Result.win)
+        {
+            <dd class="color-green">
+                @Html.DisplayFor(model => model._result)
+            </dd>
+        }
+        @if (((FootballApp.Models.PlayedMatch)Model)._result == FootballApp.Models.PlayedMatch.Result.lose)
+        {
+            <dd class="color-red">
+                @Html.DisplayFor(model => model._result)
+            </dd>
+        }
+        @if (((FootballApp.Models.PlayedMatch)Model)._result == FootballApp.Models.PlayedMatch.Result.draw)
+        {
+            <dd class="color-gray">
+                @Html.DisplayFor(model => model._result)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsScored)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsScored)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsConceded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsConceded)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

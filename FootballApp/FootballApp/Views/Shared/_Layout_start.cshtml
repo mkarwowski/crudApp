@@ -1,0 +1,45 @@
+﻿
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Football App</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="choose">
+            
+                @Html.ActionLink("Footballers", "Index", "Footballers")
+            
+            <img width="90%" src="https://static.sportzbusiness.com/uploads/2020/01/Footballers.jpg" />
+        </div>
+        <div class="choose">
+            
+                @Html.ActionLink("Teams", "Index", "Teams")
+            
+            <img width="90%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Greece_U-21-national_football_team_2011-09-05_%2801%29.jpg/800px-Greece_U-21-national_football_team_2011-09-05_%2801%29.jpg" />
+        </div>
+        <div class="choose">
+            
+                @Html.ActionLink("Played matches", "Index", "PlayedMatches")
+            
+            <img width="90%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/HB_-_NSI_football_match_02.jpg/800px-HB_-_NSI_football_match_02.jpg" />
+        </div>
+        <div style="clear:both;"></div>
+        <div class="container body-content">
+            @RenderBody()
+
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - FootballApp ASP.NET</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,59 @@
+﻿
+@model FootballApp.Models.FootballersOneTeamModel
+
+@{
+    ViewBag.Title = "ShowFootballers";
+    Layout = "~/Views/Shared/_Layout_list.cshtml";
+}
+
+<div>
+    <h4>@Html.DisplayFor(model => model.teamName)</h4>
+    <p>@Html.DisplayFor(model => model.message)</p>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.footballers.First()._team.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.footballers.First().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.footballers.First().Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.footballers.First().DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.footballers.First().Role)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.footballers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item._team.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
